@@ -1,0 +1,242 @@
+---
+---
+
+<div id="form">
+<div class="container">
+<div class="contact-form-container">
+  <div class="form-content">
+    <div class="form-text">
+      <h2>Заповни форму —<br>
+      і отримай відповідь
+      вже сьогодні</h2>
+    </div>
+    
+    <form class="contact-form" id="contactForm">
+      <div class="form-fields">
+        <div class="form-fields-1">
+        <input 
+          type="text" 
+          name="name"
+          placeholder="Ім'я" 
+          class="form-input name-input"
+          required
+        />
+        
+        <input 
+          type="text" 
+          name="contact"
+          placeholder="Email / Telegram / Viber" 
+          class="form-input contact-input"
+          required
+        />
+        </div>
+        <div class="form-fields-2">
+        <input 
+          type="text" 
+          name="description"
+          placeholder="Твоя ситуація (коротко)" 
+          class="form-input description-input"
+          required
+        />
+        <div class="form-button">
+          <button type="submit" class="cta-button">
+            <img src="/btn_ico.svg" alt="Icon" />
+            Отримати розклад
+            <img src="/btn_ico.svg" alt="Icon" />
+          </button>
+        </div>
+        </div>
+      </div>
+      <div id="form-message" style="margin-top:20px;color:#DAA520;font-weight:600;"></div>
+    </form>
+  </div>
+  
+  <div class="decoration-container">
+    <svg class="decoration-svg" width="152" height="26" viewBox="0 0 152 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="4.99878" y1="14.0417" x2="148.999" y2="14.0417" stroke="#988571"></line>
+      <path d="M76.3245 8.16407L63.8792 1.16318L71.1294 13.4685L64.1365 25.916L76.4337 18.668L88.8792 25.6688L81.6289 13.3636L88.6218 0.916016L76.3245 8.16407Z" fill="#FED1A7"></path>
+      <path d="M144.346 10.2649L136.879 6.06431L141.229 13.4475L137.034 20.916L144.412 16.5672L151.879 20.7677L147.529 13.3846L151.725 5.91602L144.346 10.2649Z" fill="#988571"></path>
+      <path d="M7.58796 10.2649L0.120728 6.06431L4.47085 13.4475L0.275132 20.916L7.65349 16.5672L15.1207 20.7677L10.7706 13.3846L14.9663 5.91602L7.58796 10.2649Z" fill="#988571"></path>
+    </svg>
+  </div>
+</div>
+</div>
+</div>
+<style lang="scss">
+  .contact-form-container {
+    background: rgba(75, 68, 63, 1);
+    border: 1px solid rgba(92, 66, 40, 1);
+    border-radius: 30px;
+    padding: 100px 70px;
+    max-width: 1860px;
+    margin: 0 auto;
+    @media (max-width: 768px) {
+      padding: 39px 16px;
+    }
+  }
+
+  .form-content {
+    display: flex;
+    align-items: center;
+    gap: 117.35px;
+    
+    @media (max-width: 1600px) {
+      gap: 80px;
+    }
+    @media (max-width: 1440px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap:32px;
+    }
+  }
+
+  .form-text {    
+    h2 {
+      font-family: 'Coolvetica', sans-serif;
+      font-size: 60px;
+      font-weight: 400;
+      line-height: 70px;
+      color: rgba(254, 209, 167, 1);
+      max-width: 552.65px;
+      @media (max-width: 1440px) {
+        font-size: 40px;
+        line-height: 50px;
+        max-width: 450px;
+      }
+      @media (max-width: 768px) {
+        text-align: center;
+        font-size: 32px;
+        line-height: 40px;
+      }
+    }
+  }
+
+  .contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .form-fields-1, .form-fields-2{
+    display: flex;
+    gap: 15px;
+    @media (max-width: 1200px) {
+      flex-direction: column;
+    }
+  }
+
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (max-width: 768px) {
+      gap: 15px;
+    }
+  }
+
+  .form-input {
+    background: #2a251e;
+    border: none;
+    border-radius: 60px;
+    padding: 20px 30px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    height: 60px;
+    @media (max-width: 768px) {
+      height: 66px;
+    }
+    
+    &::placeholder {
+      color: rgba(202, 195, 188, 1);
+      font-weight: 400;
+    }
+    
+    &:focus {
+      background: #332e25;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(254, 209, 167, 0.1);
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+
+  .textarea-input {
+    min-height: 80px;
+    resize: vertical;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .form-button {
+    display: flex;
+    justify-content: flex-end;
+    
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+  }
+
+  .decoration-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    
+    @media (max-width: 768px) {
+      margin-top: 32px;
+    }
+  }
+</style>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const messageDiv = document.getElementById('form-message');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      messageDiv.textContent = '';
+      
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        contact: formData.get('contact'),
+        description: formData.get('description')
+      };
+      
+      console.log('Sending data:', data);
+      
+      try {
+        const res = await fetch('/api/send-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        console.log('Response status:', res.status);
+        const result = await res.json();
+        console.log('Response:', result);
+        
+        if(result.success) {
+          messageDiv.textContent = 'Дякуємо! Вашу заявку надіслано.';
+          form.reset();
+        } else {
+          messageDiv.textContent = 'Сталася помилка. Спробуйте ще раз.';
+        }
+      } catch (err) {
+        console.error('Fetch error:', err);
+        messageDiv.textContent = 'Сталася помилка. Спробуйте ще раз.';
+      }
+    });
+  });
+</script>

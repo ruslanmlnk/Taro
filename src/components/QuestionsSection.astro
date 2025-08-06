@@ -1,0 +1,343 @@
+---
+---
+
+<section class="questions-section overflow-hidden">
+  <div class="container">
+    <h2 class="section-title">Твоє запитання — твоя відповідь</h2>
+    <p class="section-subtitle">Можливо, саме зараз у твоєму житті є моменти, які хочеться зрозуміти глибше</p>
+    <div class="questions-grid">
+      <div class="question-card">
+        <div class="question-image"></div>
+        <div class="question-content">
+          <h3>Що відбувається в моїх стосунках?</h3>
+        </div>
+      </div>
+      <div class="question-card">
+        <div class="question-image"></div>
+        <div class="question-content">
+          <h3>Який вибір правильний для мене зараз?</h3>
+        </div>
+      </div>
+      <div class="question-card">
+        <div class="question-image"></div>
+        <div class="question-content">
+          <h3>Чому я відчуваю <span class="mobile"><br></span>тривогу —<br> і що за цим стоїть?</h3>
+        </div>
+      </div>
+      <div class="question-card">
+        <div class="question-image"></div>
+        <div class="question-content">
+          <h3>Як мені повернути впевненість у собі?</h3>
+        </div>
+      </div>
+    </div>
+    <div class="questions-decoration">
+      <svg class="decoration-svg" width="152" height="26" viewBox="0 0 152 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="4.99878" y1="14.0417" x2="148.999" y2="14.0417" stroke="#988571"/>
+        <path d="M76.3245 8.16407L63.8792 1.16318L71.1294 13.4685L64.1365 25.916L76.4337 18.668L88.8792 25.6688L81.6289 13.3636L88.6218 0.916016L76.3245 8.16407Z" fill="#FED1A7"/>
+        <path d="M144.346 10.2649L136.879 6.06431L141.229 13.4475L137.034 20.916L144.412 16.5672L151.879 20.7677L147.529 13.3846L151.725 5.91602L144.346 10.2649Z" fill="#988571"/>
+        <path d="M7.58796 10.2649L0.120728 6.06431L4.47085 13.4475L0.275132 20.916L7.65349 16.5672L15.1207 20.7677L10.7706 13.3846L14.9663 5.91602L7.58796 10.2649Z" fill="#988571"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animate');
+          }, index * 100);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.question-card').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+<style lang="scss">
+  .mobile{
+    display: none;
+  }
+  .questions-section {
+    padding: 0 30px;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 1860px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 100px 69px;
+    background: rgba(75, 68, 63, 1);
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
+  .questions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin: 0 auto;
+    position: relative;
+    max-width: 100%;
+  }
+
+  .question-card {
+    background: #FFFFFF;
+    border-radius: 40px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+    height: max-content;
+    width: 100%;
+    max-width: 400px;
+    justify-self: center;
+  }
+
+  .question-card:nth-child(2),
+  .question-card:nth-child(4) {
+    margin-top: 60px;
+  }
+
+  .question-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .question-image {
+    width: 100%;
+    height: 332px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .question-card:nth-child(1) .question-image {
+    background: url('/q1.jpg') center/cover no-repeat;
+  }
+
+  .question-card:nth-child(2) .question-image{
+    background: url('/q2.jpg') center/cover no-repeat;
+  }
+
+  .question-card:nth-child(3) .question-image {
+    background: url('/q3.jpg') center/cover no-repeat;
+  }
+
+  .question-card:nth-child(4) .question-image{
+    background: url('/q4.jpg') center/cover no-repeat;
+  }
+
+  .question-content {
+    padding: 32px 24px;
+    background: rgba(255, 243, 235, 1);
+    text-align: center;
+    height: 138px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .question-card h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #000;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .questions-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .decoration-svg {
+    width: 152px;
+    height: 26px;
+  }
+
+  .question-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+  }
+
+  .question-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1600px) {
+    .container {
+      padding: 90px 60px;
+    }
+    
+    .questions-grid {
+      gap: 35px;
+    }
+    
+    .question-card {
+      max-width: 350px;
+    }
+    
+    .question-image {
+      height: 300px;
+    }
+    
+    .question-content {
+      height: 120px;
+      padding: 28px 20px;
+    }
+    
+    .question-card h3 {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .container {
+      padding: 80px 50px;
+    }
+    
+    .questions-grid {
+      gap: 30px;
+    }
+    
+    .question-card {
+      max-width: 320px;
+    }
+    
+    .question-image {
+      height: 270px;
+    }
+    
+    .question-content {
+      height: 110px;
+      padding: 24px 18px;
+    }
+    
+    .question-card h3 {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .container {
+      padding: 70px 40px;
+    }
+    
+    .questions-grid {
+      gap: 25px;
+    }
+    
+    .question-card {
+      max-width: 280px;
+      
+      border-radius: 20px;
+    }
+    
+    .question-image {
+      height: 240px;
+    }
+    
+    .question-content {
+      height: 100px;
+      padding: 20px 16px;
+    }
+    
+    .question-card h3 {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .container {
+      padding: 60px 30px;
+    }
+    
+    .questions-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    
+    .question-card {
+      max-width: 100%;
+    }
+    
+    .question-image {
+      height: 220px;
+    }
+    
+    .question-content {
+      height: 100px;
+      padding: 20px 16px;
+    }
+    
+    .question-card h3 {
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    .question-card:nth-child(2),
+    .question-card:nth-child(4) {
+      margin-top: 0;
+    }
+  }
+
+
+
+  @media (max-width: 768px) {
+    .mobile{
+      display: inline;
+    }
+    .questions-section {
+      padding: 42px 20px 0;
+    }
+    
+    .container {
+      padding: 40px 20px;
+    }
+
+    .questions-grid {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 24px;
+    }
+
+    .question-card {
+      width: 280px;
+      max-width: 280px;
+    }
+
+
+    .question-image {
+      height: 200px;
+    }
+
+    .question-content {
+      padding: 24px;
+      height: auto;
+    }
+
+
+
+    .questions-decoration {
+      margin-top: 32px;
+    }
+  }
+</style>

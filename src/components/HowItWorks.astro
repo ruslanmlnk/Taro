@@ -1,0 +1,298 @@
+---
+// HowItWorks.astro
+---
+
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <h2 class="title">Як це працює</h2>
+    <p class="section-subtitle">Інструкція в 3 кроки:</p>
+    
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-icon">
+          <img src="/ico-1.svg" alt="">
+        </div>
+        <div class="step-number">01</div>
+        <h3 class="step-title">Опиши свою ситуацію</h3>
+        <p class="step-description">Надішли короткий запит або питання — що саме тебе турбує</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-icon">
+          <img src="/ico-2.svg" alt="">
+        </div>
+        <div class="step-number">02</div>
+        <h3 class="step-title">Ми підготуємо персональний розбір</h3>
+        <p class="step-description">Проводимо персональний аналіз з урахуванням контексту й запиту</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-icon">
+          <img src="/ico-3.svg" alt="">
+        </div>
+        <div class="step-number">03</div>
+        <h3 class="step-title">Отримай результат</h3>
+        <p class="step-description">У зручному форматі — голосовим повідомленням або текстом</p>
+      </div>
+    </div>
+
+    <!-- Decorative SVG -->
+    <div class="decoration">
+      <svg class="decoration-svg" width="152" height="26" viewBox="0 0 152 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="4.99878" y1="14.0417" x2="148.999" y2="14.0417" stroke="#988571"/>
+        <path d="M76.3245 8.16407L63.8792 1.16318L71.1294 13.4685L64.1365 25.916L76.4337 18.668L88.8792 25.6688L81.6289 13.3636L88.6218 0.916016L76.3245 8.16407Z" fill="#FED1A7"/>
+        <path d="M144.346 10.2649L136.879 6.06431L141.229 13.4475L137.034 20.916L144.412 16.5672L151.879 20.7677L147.529 13.3846L151.725 5.91602L144.346 10.2649Z" fill="#988571"/>
+        <path d="M7.58796 10.2649L0.120728 6.06431L4.47085 13.4475L0.275132 20.916L7.65349 16.5672L15.1207 20.7677L10.7706 13.3846L14.9663 5.91602L7.58796 10.2649Z" fill="#988571"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-it-works {
+    padding: 0 30px;
+  }
+
+  .container {
+    background: rgba(75, 68, 63, 1);
+    margin: 0 auto;
+    padding: 100px 69px;
+    text-align: center;
+    border-radius: 30px;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .step-card {
+    background: #F5E6D3;
+    border-radius: 24px;
+    padding: 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .step-icon {
+    margin-bottom: 24px;
+    width: 79.17px;
+    height: 81px;
+    background-color: rgba(119, 107, 98, 1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .step-number {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    font-size: 99px;
+    font-weight: 400;
+    color: rgba(139, 109, 71, 0.15);
+    line-height: 66px;
+    font-family: 'Coolvetica', sans-serif;
+  }
+
+  .step-title {
+    font-size: 30px;
+    font-weight: 400;
+    color: rgba(154, 92, 35, 1);
+    margin-bottom:16px;
+    line-height: 37px;
+    font-family: 'Coolvetica', sans-serif;
+  }
+
+  .step-description {
+    font-size: 22px;
+    color: #6B5B47;
+    margin: 0;
+    line-height: 1.45;
+    flex-grow: 1;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  .decoration {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .decoration-svg {
+    opacity: 0.8;
+  }
+
+  // Проміжкові брейкпоінти
+  @media (max-width: 1600px) {
+    .container {
+      padding: 90px 60px;
+    }
+    
+    .steps-grid {
+      gap: 35px;
+    }
+    
+    .step-title {
+      font-size: 28px;
+      line-height: 34px;
+    }
+    
+    .step-description {
+      font-size: 20px;
+    }
+    
+    .step-number {
+      font-size: 90px;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .container {
+      padding: 80px 50px;
+    }
+    
+    .steps-grid {
+      gap: 30px;
+    }
+    
+    .step-title {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    
+    .step-description {
+      font-size: 19px;
+    }
+    
+    .step-number {
+      font-size: 85px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .container {
+      padding: 70px 40px;
+    }
+    
+    .steps-grid {
+      gap: 25px;
+    }
+    
+    .step-title {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    
+    .step-description {
+      font-size: 18px;
+    }
+    
+    .step-number {
+      font-size: 80px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .container {
+      padding: 60px 30px;
+    }
+    
+    .steps-grid {
+      gap: 20px;
+    }
+    
+    .step-title {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    
+    .step-description {
+      font-size: 17px;
+    }
+    
+    .step-number {
+      font-size: 75px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      padding: 50px 25px;
+    }
+    
+    .step-title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    
+    .step-description {
+      font-size: 16px;
+    }
+    
+    .step-number {
+      font-size: 70px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .how-it-works {
+      padding: 0 20px;
+    }
+
+    .container {
+      padding: 40px 20px;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 0;
+    }
+
+    .step-card {
+      padding: 32px;
+      min-height: auto;
+    }
+
+    .step-number {
+      font-size: 72px;
+      top: 24px;
+      right: 24px;
+    }
+
+    .step-title {
+      font-size: 26px;
+      line-height: 33px;
+    }
+    
+    .step-description {
+      font-size: 18px;
+      
+      line-height: 26px;
+      max-width: 205px;
+    }
+
+    .step-icon{
+      width: 54.73px;
+      height: 56px;
+      margin-bottom: 16px;
+    }
+    .step-icon img{
+      width: 29px;
+      height: 29px;
+    }
+    .decoration{
+      margin-top: 32px;
+    }
+  }
+</style>

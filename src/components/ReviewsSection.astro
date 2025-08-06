@@ -1,0 +1,188 @@
+---
+interface Review {
+  name: string;
+  age: string;
+  text: string;
+}
+
+const reviews: Review[] = [
+  {
+    name: "Катерина",
+    age: "32 роки",
+    text: "\"Я плакала, коли читала відповідь. Вона ніби знала все — навіть те, що складно пояснити близьким. Це не шаблон, а справжнє розуміння і підтримка.\""
+  },
+  {
+    name: "Олена", 
+    age: "41 рік",
+    text: "\"Я довго не могла прийняти рішення в особистому житті. Цей розбір допоміг мені побачити себе з боку. Дякую за делікатність і точність.\""
+  },
+  {
+    name: "Марина",
+    age: "27 років", 
+    text: "\"Це був не просто розклад — це була підтримка. Спокійна, без осуду, дуже глибока розмова, хоч і письмова. Відчула, ніби мене дійсно почули\""
+  },
+  {
+    name: "Наталі",
+    age: "36 років",
+    text: "\"Раніше не вірила в подібне. Але відповідь була точнішою за слова близьких. Тепер радцю подрузі — іноді сторонній погляд потрібніший.\""
+  }
+];
+---
+
+<section class="reviews" id="reviews">
+  <h2 class="section-title">Відгуки</h2>
+  <p class="section-subtitle">Щирі відгуки від тих, хто вже знайшов свої відповіді</p>
+  <div class="reviews__container">
+    {reviews.map((review) => (
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__name-container">
+            <div class="review-card__name-wrapper">
+              <div class="review-card__name">{review.name}</div>
+              <div class="review-card__age">{review.age}</div>
+            </div>
+            <img src="/quote.png" alt="quotes" class="review-card__quotes" />
+          </div>
+          <img src="/divider.svg" alt="divider" class="review-card__divider" />
+        </div>
+        
+        <div class="review-card__stars">
+          {Array.from({ length: 5 }).map(() => (
+            <img src="/star_review.svg" alt="star" class="review-card__star" />
+          ))}
+        </div>
+        
+        <div class="review-card__text">
+          {review.text}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style lang="scss">
+  .section-title{
+
+    @media (max-width: 768px) {
+      margin-bottom: 18px;
+    }
+  }
+  .section-subtitle{
+    font-size: 22px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+
+    }
+  }
+  .reviews {
+    padding: 94px 20px 0;
+
+    @media (max-width: 768px) {
+      padding: 43px 20px 0;
+        
+    }
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 400px);
+      gap: 40px;
+      max-width: 1720px;
+      margin: 0 auto;
+      justify-content: center;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+
+      }
+    }
+  }
+
+  .review-card {
+    background: rgba(35, 32, 29, 1);
+    border: 1px solid rgba(92, 66, 40, 1);
+    border-radius: 16px;
+    padding: 40px 30px;
+    color: white;
+    position: relative;
+    min-height: 280px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 32px 24px;
+    }
+
+    &__header {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    &__name-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    &__name-wrapper {
+      flex: 1;
+    }
+
+    &__name {
+      font-family: 'Coolvetica', sans-serif;
+      font-size: 26px;
+      line-height: 31px;
+      font-weight: normal;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    &__age {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(202, 195, 188, 1);
+      margin-bottom: 26px;
+    }
+
+    &__quotes {
+      width: 56.78px;
+      height: 47.62px;
+      flex-shrink: 0;
+    }
+
+    &__divider {
+      width: 100%;
+      // margin-bottom: 5px;
+    }
+
+    &__stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    &__star {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.5;
+      color: rgba(202, 195, 188, 1);
+      flex-grow: 1;
+    }
+  }
+</style>

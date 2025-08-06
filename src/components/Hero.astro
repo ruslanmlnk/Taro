@@ -1,0 +1,226 @@
+---
+---
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Відчуй ясність там, де зараз сумніви</h1>
+        <p>Отримай персональний інсайт від експертки, яка допомагає жінкам бачити глибше</p>
+        <a href="#form" class="cta-button">
+          <img src="/btn_ico.svg" alt="Icon" />
+          Отримати розклад
+          <img src="/btn_ico.svg" alt="Icon" />
+        </a>
+      </div>
+      <div class="tarot-cards">
+        <div class="card">
+          <img src="/The sun.png" alt="The Sun" />
+        </div>
+        <div class="card">
+          <img src="/The Empress.png" alt="The Empress" />
+        </div>
+        <div class="card">
+          <img src="/The moon.png" alt="The Moon" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  window.addEventListener('load', function() {
+    const cards = document.querySelectorAll('.card');
+
+      if (cards[1]) {
+        //cards[1].style.transform = 'translateY(0) rotate(0deg) scale(1)';
+        cards[1].classList.add('animated');
+      }
+    setTimeout(() => {
+      if (cards[0]) {
+        cards[0].style.opacity = '1';
+        cards[0].classList.add('animated');
+      }
+    }, 700);
+    setTimeout(() => {
+      if (cards[2]) {
+        cards[2].style.opacity = '1';
+        cards[2].classList.add('animated');
+      }
+    }, 1300);
+
+  });
+</script>
+
+<style lang="scss">
+  .hero {
+    padding: 249px 70px 142px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: flex;
+    gap: 520px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    max-width: 1720px;
+    margin: 0 auto;
+  }
+
+  .hero-text h1 {
+    font-size: 70px;
+    line-height: 70px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    max-width: 597px;
+    color: rgba(254, 209, 167, 1);
+    font-family: 'Coolvetica', sans-serif;
+  }
+
+  .hero-text p {
+    font-size: 22px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    color: #b0b0b0;
+    max-width: 480px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .tarot-cards {
+    position: relative;
+    height: 584.31px;
+  }
+
+  .card {
+    position: absolute;
+    width: 286.69px;
+    height: 475.32px;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    opacity: 0;
+    overflow: hidden;
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(218, 165, 32, 0.2);
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover img {
+    transform: scale(1.05);
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(3) {
+    top: 80px;
+    left: 0;
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+
+  .card:nth-child(2) {
+    width: 340.49px;
+    height: 564.52px;
+    left: 0;
+    transform: translateY(-200px) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  .card.animated:nth-child(1) {
+    top: 80px;
+    left: -206px;
+    transform: rotate(-15deg) translateZ(0) scale(1);
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .card.animated:nth-child(2) {
+    left: 0;
+    transform: rotate(0deg) translateZ(10px) scale(1);
+    z-index: 3;
+    opacity: 1;
+  }
+
+  .card.animated:nth-child(3) {
+    top: 80px;
+    left: 262px;
+    transform: rotate(15deg) translateZ(5px) scale(1);
+    z-index: 2;
+    opacity: 1;
+  }
+
+
+
+  @media (max-width: 1720px) {
+    .hero-content{
+      gap: 345px;
+    }
+  }
+
+
+  @media (max-width: 1200px) {
+    .hero-content{
+      gap: 245px;
+    }
+    .tarot-cards{
+      z-index: -1;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .hero-content{
+      gap: 195px;
+    }
+    .tarot-cards{
+      z-index: -1;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 116px 0 0;
+    }
+
+    .hero-content{
+      flex-direction: column-reverse;
+      gap: 32px;
+      text-align: center;
+    }
+    
+    .hero-text h1 {
+      font-size: 32px;
+      line-height: 40px;
+      margin-bottom: 16px;
+    }
+    
+    .hero-text p {
+      font-size: 16px;
+      line-height: 23px;
+      margin-bottom: 32px;
+    }
+    
+
+    .tarot-cards {
+      width: 100%;
+      height: 604px;
+      zoom: 0.5;
+      transform: translateX(calc(50% - 170px));
+    }
+  }
+
+
+  @media (max-width: 400px) {
+    .tarot-cards {
+      zoom: 0.34;
+    }
+  }
+</style> 

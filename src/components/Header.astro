@@ -1,0 +1,457 @@
+---
+---
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo">
+          <img src="/Illustration.svg" alt="Logo" />
+        </div>
+      </div>
+      <nav class="nav-container">
+        <ul class="nav">
+          <li><a href="#hero" class="nav-item active">Головна</a></li>
+          <li><a href="#expert" class="nav-item">Про мене</a></li>
+          <li><a href="#how-it-works" class="nav-item">Як це працює</a></li>
+          <li><a href="#reviews" class="nav-item">Відгуки</a></li>
+        </ul>
+      </nav>
+      <a href="#form" class="cta-button">
+        <img src="/btn_ico.svg" alt="Icon" />
+        Отримати розклад
+        <img src="/btn_ico.svg" alt="Icon" />
+      </a>
+      <div class="mobile-menu-toggle">
+        <img src="/burger.svg" alt="Меню" class="burger-icon">
+        <img src="/close.svg" alt="Меню" class="close-icon">
+      </div>
+    </div>
+
+    <div class="mobile-menu">
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li><a href="#hero" class="mobile-nav-item">ГОЛОВНА</a></li>
+          <li><a href="#expert" class="mobile-nav-item">ПРО МЕНЕ</a></li>
+          <li><a href="#how-it-works" class="mobile-nav-item">ЯК ЦЕ ПРАЦЮЄ</a></li>
+          <li><a href="#reviews" class="mobile-nav-item">ВІДГУКИ</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="#form" class="cta-button">
+          <img src="/btn_ico.svg" alt="Icon" />
+          Отримати розклад
+          <img src="/btn_ico.svg" alt="Icon" />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('.nav-item');
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    const sections = document.querySelectorAll('section[id], div[id]');
+    
+    function smoothScrollTo(targetId) {
+      const target = document.querySelector(targetId);
+      if (target) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const windowHeight = window.innerHeight;
+        const targetHeight = target.offsetHeight;
+        const targetTop = target.offsetTop;
+        
+        const offset = 200;
+        const targetPosition = targetTop - headerHeight - offset;
+        
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        });
+      }
+    }
+    
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        smoothScrollTo(targetId);
+      });
+    });
+    
+    mobileNavItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        smoothScrollTo(targetId);
+      });
+    });
+    
+    function updateActiveLink() {
+      const scrollPosition = window.scrollY + 600;
+      
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = '#' + section.getAttribute('id');
+        }
+      });
+      
+      if (scrollPosition < 500) {
+        currentSection = '#hero';
+      }
+      
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === currentSection) {
+          item.classList.add('active');
+        }
+      });
+      
+      mobileNavItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === currentSection) {
+          item.classList.add('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', updateActiveLink);
+    
+    updateActiveLink();
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const burgerIcon = mobileMenuToggle.querySelector('.burger-icon');
+    const closeIcon = mobileMenuToggle.querySelector('.close-icon');
+    const header = document.querySelector('.header');
+
+    function openMobileMenu() {
+      header.classList.add('mobile-menu-open');
+      burgerIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
+    }
+
+    function closeMobileMenu() {
+      header.classList.remove('mobile-menu-open');
+      burgerIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    }
+
+    mobileMenuToggle.addEventListener('click', function() {
+      if (header.classList.contains('mobile-menu-open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    mobileNavItems.forEach(item => {
+      item.addEventListener('click', closeMobileMenu);
+    });
+
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
+        closeMobileMenu();
+      }
+    });
+  });
+</script>
+
+<style lang="scss">
+  .header {
+    padding: 40px 70px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 1000;
+  }
+
+  .header-content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1720px;
+  }
+
+  .logo-container {
+    width: 289px;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    background: rgba(44, 37, 32, 0.69);
+    padding: 15px 24px;
+    border: 1px solid rgba(92, 66, 40, 1);
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .logo img {
+    width: 88px;
+    height: 40px;
+    display: block;
+  }
+
+  .logo:hover {
+    background: rgba(44, 37, 32, 0.8);
+    border-color: rgba(92, 66, 40, 0.8);
+  }
+
+  .nav-container {
+    border: 1px solid rgba(92, 66, 40, 1);
+    background: rgba(44, 37, 32, 0.42);
+    border-radius: 60px;
+    overflow: hidden;
+  }
+
+  .nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 158px;
+    height: 69px;
+    background: transparent;
+    border: none;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  .nav-item:hover {
+    color: #DAA520;
+    background: rgba(44, 37, 32, 0.3);
+  }
+
+  .nav-item.active {
+    border: 1px solid rgba(92, 66, 40, 1);
+    border-radius: 60px;
+    background: rgba(44, 37, 32, 0.5);
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 8px;
+    position: relative;
+  }
+
+  .burger-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .close-icon {
+    display: none;
+    color: #D4C0A8;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .mobile-menu {
+    width: 100%;
+    background: rgba(44, 37, 32, 1);
+    border: 1px solid rgba(92, 66, 40, 1);
+    border-radius: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    margin-top: 0;
+    position: absolute;
+    width: calc(100% - 28px);
+    top: 16px;
+    left: 14px;
+    
+    border-radius: 20px;
+}
+  header.mobile-menu-open .header-content{
+    background: rgba(44, 37, 32, 1);
+    border: 1px solid rgba(92, 66, 40, 1);
+    border: none;
+  }
+  header.mobile-menu-open .mobile-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    border-bottom: 1px solid rgba(92, 66, 40, 1); 
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-inline: 20px;
+  }
+
+  .mobile-nav-item {
+    display: block;
+    color: #D4C0A8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 12px 0;
+    margin: 5px 0;
+    font-family: 'Work Sans', sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-item:hover {
+    color: #F7D9C0;
+  }
+
+  .mobile-nav-item.active {
+    color: #DAA520;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1600px) {
+    .header {
+      padding: 35px 60px;
+    }
+    
+    .logo-container {
+      width: auto;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .header {
+      padding: 30px 50px;
+    }
+    
+    .logo-container {
+      width: 240px;
+    }
+    
+    .nav-item {
+      width: 130px;
+      height: 55px;
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .header {
+      padding: 25px 40px;
+    }
+    
+    .logo-container {
+      width: 220px;
+    }
+    
+    .nav-item {
+      width: 120px;
+      height: 50px;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .header {
+      padding: 20px 30px;
+    }
+    
+    .logo-container {
+      width: 200px;
+    }
+    
+    .nav-item {
+      width: 110px;
+      height: 45px;
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .header {
+      padding: 18px 25px;
+    }
+    
+    .logo-container {
+      width: 180px;
+    }
+    
+    .nav-item {
+      width: 100px;
+      height: 40px;
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: 20px 0;
+    }
+    .header-content{
+      background: rgba(44, 37, 32, 0.42);
+      border: 1px solid rgba(92, 66, 40, 1);
+      border-radius: 20px;
+      height: 48px;
+      padding: 8px 10px;
+    }
+    
+    .logo-container {
+      width: auto;
+    }
+    .logo{
+      padding: 6px 11px;
+      border-width: 0.46px; 
+    }
+    .logo img{
+      height: 18.55px;
+      width: auto;
+    }
+    
+    .nav-container, .cta-button {
+      display: none;
+    }
+    .mobile-cta{
+      padding: 20px 20px 0;
+    }
+
+    .mobile-cta .cta-button{
+      display: flex;
+    }
+
+    .mobile-menu-toggle {
+      display: block;
+    }
+  }
+</style>
