@@ -47,7 +47,7 @@
         </div>
         </div>
       </div>
-      <div id="form-message" style="margin-top:20px;color:#DAA520;font-weight:600;"></div>
+      <div id="form-message" style="margin-top:20px;color:#DAA520;font-weight:600; display: none;"></div>
     </form>
   </div>
   
@@ -237,6 +237,7 @@
         console.error('Fetch error:', err);
         messageDiv.textContent = 'Сталася помилка. Спробуйте ще раз.';
       }
+      messageDiv.style.display = "block";
     });
   });
 </script>
