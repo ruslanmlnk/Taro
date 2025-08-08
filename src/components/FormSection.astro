@@ -217,7 +217,7 @@
       console.log('Sending data:', data);
       
       try {
-        const res = await fetch('/api/send-form', {
+        const res = await fetch('/api/feedback-taros', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
