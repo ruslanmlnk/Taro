@@ -8,6 +8,10 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
+  server: { 
+        port: 5075,
+        host: "0.0.0.0"
+    },
   vite: {
     envDir: '.'
   }
